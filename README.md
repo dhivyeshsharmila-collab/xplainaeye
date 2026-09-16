@@ -66,6 +66,16 @@ npm run undeploy:local
 
 This is local-only deployment. Public 24/7 access requires a machine or hosting provider that remains online; that cannot be provided with zero account or signup.
 
+## Vercel deployment
+
+Vercel hosts the frontend and Node backend, but it does not automatically host the TensorFlow/FastAPI service in `ai-service`. Configure this environment variable in the Vercel project settings before deploying:
+
+```text
+MODEL_API_URL=https://your-public-ai-service.example.com
+```
+
+The URL must be reachable from the internet and expose `/health` and `/predict`. Do not use `http://localhost:8000` in Vercel; that points to the Vercel runtime itself. A temporary development option is to run `cloudflared tunnel --url http://localhost:8000`, but the generated URL changes and is not suitable for reliable production hosting.
+
 ## Screening workflow
 
 ```text
