@@ -1,0 +1,21 @@
+{
+  "name": "xplainaeye-real",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "install:all": "npm --prefix frontend install && npm --prefix backend install",
+    "dev": "npx concurrently -k \"npm --prefix frontend run dev\" \"npm --prefix backend run dev\"",
+    "build": "npm --prefix frontend run build",
+    "start": "npm --prefix backend start",
+    "ai:setup": "bash ai-service/setup-mac.sh",
+    "ai": "bash ai-service/start.sh",
+    "dev:full": "npx concurrently -k \"npm --prefix frontend run dev\" \"npm --prefix backend run dev\" \"bash ai-service/start.sh\"",
+    "deploy:local": "bash scripts/install-local-24-7.sh",
+    "undeploy:local": "bash scripts/uninstall-local-24-7.sh",
+    "train:public": "bash ai-service/train-public.sh",
+    "train:verified": "bash ai-service/train-verified.sh"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
